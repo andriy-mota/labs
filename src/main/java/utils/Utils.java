@@ -1,6 +1,5 @@
 package utils;
 
-import lab1.Lab1;
 import lab2.Lab2;
 import org.apache.commons.io.IOUtils;
 
@@ -47,11 +46,32 @@ public class Utils {
 
         int z = 0;
         for (int i = 0; i < 3; ++i) {
-            for(int j = 0; j < 5; ++j) {
+            for (int j = 0; j < 5; ++j) {
                 comparison[i][j] = inputData[z++].toCharArray()[0];
             }
         }
         return comparison;
+    }
+
+    public static double[] readLab4Weights() {
+        String[] inputData = getResourceAsString("../lb_4_weight.txt").split(";");
+        double[] weight = new double[inputData.length];
+        for (int i = 0; i < inputData.length; ++i) {
+            weight[i] = Double.parseDouble(inputData[i]);
+        }
+        return weight;
+    }
+
+    public static double[][] readLab4Ranks() {
+        String[] lines = getResourceAsString("../lb_4_ranks.txt").split("\n");
+        double[][] ranks = new double[5][5];
+        for (int i = 0; i < 5; ++i) {
+            String[] inputData = lines[i].split(";");
+            for (int j = 0; j < 5; ++j) {
+                ranks[i][j] = Double.parseDouble(inputData[j]);
+            }
+        }
+        return ranks;
     }
 
     private static String getResourceAsString(String fileName) {
