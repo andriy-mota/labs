@@ -74,6 +74,18 @@ public class Utils {
         return ranks;
     }
 
+    public static int[][] readLab5Data() {
+        String[] lines = getResourceAsString("../lb_4_ranks.txt").split("\n");
+        int[][] price = new int[5][5];
+        for (int i = 0; i < 5; ++i) {
+            String[] inputData = lines[i].split(";");
+            for (int j = 0; j < 5; ++j) {
+                price[i][j] = Integer.parseInt(inputData[j]);
+            }
+        }
+        return price;
+    }
+
     private static String getResourceAsString(String fileName) {
         try (InputStream is = Lab2.class.getResourceAsStream(fileName)) {
             return IOUtils.toString(is);
