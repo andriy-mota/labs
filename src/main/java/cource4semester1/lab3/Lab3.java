@@ -1,4 +1,4 @@
-package lab3;
+package cource4semester1.lab3;
 
 import utils.Utils;
 

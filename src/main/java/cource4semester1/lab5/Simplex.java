@@ -1,4 +1,4 @@
-package lab5;
+package cource4semester1.lab5;
 
 
 import java.util.Collection;

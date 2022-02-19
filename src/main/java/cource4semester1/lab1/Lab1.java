@@ -1,4 +1,4 @@
-package lab1;
+package cource4semester1.lab1;
 
 import utils.Utils;
 
@@ -17,7 +17,7 @@ public class Lab1 {
         max(data);
         gurvica(data);
         laplasa(data);
-        bayesaLaplasa(data);
+//        bayesaLaplasa(data);
 
     }
 
@@ -45,16 +45,16 @@ public class Lab1 {
     }
 
     public static void gurvica(Integer[][] data) {
-        int[] min = new int[3];
-        int[] max_a = new int[3];
-        double[] gur = new double[3];
+        int[] min = new int[4];
+        int[] max_a = new int[4];
+        double[] gur = new double[4];
         double max = 0;
         double cof = 0.6;
 
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < 4; i++) {
             min[i] = data[i][0];
             max_a[i] = data[i][0];
-            for (int j = 0; j < 3; j++) {
+            for (int j = 0; j < 4; j++) {
                 if (min[i] >= data[i][j]) {
                     min[i] = data[i][j];
                 }
@@ -69,15 +69,15 @@ public class Lab1 {
     }
 
     public static void laplasa(Integer[][] x) {
-        double[] lap = new double[3];
+        double[] lap = new double[4];
         double max = 0;
 
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < 4; i++) {
             lap[i] = 0;
-            for (int j = 0; j < 3; j++) {
+            for (int j = 0; j < 4; j++) {
                 lap[i] += x[i][j];
             }
-            lap[i] /= 3;
+            lap[i] /= 4;
         }
         printResultAndBestResult(lap, max, "Laplasa method:");
     }
