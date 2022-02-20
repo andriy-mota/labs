@@ -16,7 +16,7 @@ public class Solution {
     }
 
     private void doResolve() {
-        List<Edge> edges = Utils.readAdjacencyMatrix("l1_2.txt");
+        List<Edge> edges = Utils.readAdjacencyMatrix("lb1", "l1_2.txt");
         this.algorithm = new KruskalAlgImpl(edges.size());
         edges.sort(Comparator.comparingInt(Edge::getWeight));
         List<Edge> tree = edges.stream().filter(this::kruskalApprove).collect(Collectors.toList());

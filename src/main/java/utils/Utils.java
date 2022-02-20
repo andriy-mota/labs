@@ -95,8 +95,8 @@ public class Utils {
         return price;
     }
 
-    public static List<Edge> readAdjacencyMatrix(final String fileName) {
-        String[] allLines = getResourceAsString("/course4semester2/lb1/" + fileName).split("\n");
+    public static List<Edge> readAdjacencyMatrix(String lbName, String fileName) {
+        String[] allLines = getResourceAsString("/course4semester2/" + lbName + "/" + fileName).split("\n");
         int verticesCount = Integer.parseInt(allLines[0]);
         String[] edgesLines = new String[verticesCount];
         System.arraycopy(allLines, 1, edgesLines, 0, verticesCount);

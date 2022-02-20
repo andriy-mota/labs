@@ -1,6 +1,13 @@
 package course4semester2.lb1;
 
+import java.util.Objects;
+
 public class Edge {
+
+    public Edge(int startVertex, int endVertex) {
+        this.startVertex = startVertex;
+        this.endVertex = endVertex;
+    }
 
     public Edge(int startVertex, int endVertex, int weight) {
         this.startVertex = startVertex;
@@ -38,6 +45,7 @@ public class Edge {
 
     @Override
     public String toString() {
-        return "[" + startVertex + "; " + endVertex + "]: " + weight;
+        return Objects.isNull(weight) ? "[" + startVertex + "; " + endVertex + "]" :
+                "[" + startVertex + "; " + endVertex + "]: " + weight;
     }
 }
