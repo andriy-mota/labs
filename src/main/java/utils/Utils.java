@@ -112,6 +112,29 @@ public class Utils {
         return edges;
     }
 
+    public static void fillMatrix(int[][] matrix, int number) {
+        for(int i = 0; i < matrix.length; ++i) {
+            for(int j = 0; j < matrix[i].length; ++j) {
+                matrix[i][j] = number;
+            }
+        }
+    }
+
+    public static int[][] readLab4Matrix() {
+        String[] allLines = getResourceAsString("/course4semester2/lb4/l4_2.txt").split("\n");
+        int numberOfVertices = Integer.parseInt(allLines[0]);
+        String[] matrixLines = new String[allLines.length-1];
+        System.arraycopy(allLines, 1, matrixLines, 0, matrixLines.length);
+        int[][] matrix = new int[numberOfVertices][numberOfVertices];
+        for (int i = 0; i < numberOfVertices; ++i) {
+            String[] inputData = matrixLines[i].split(" ");
+            for (int j = 0; j < numberOfVertices; ++j) {
+                matrix[i][j] = Integer.parseInt(inputData[j]);
+            }
+        }
+        return matrix;
+    }
+
     private static String getStringFromLinesByPosition(String[] lines, int row, int column) {
         return lines[row].split(" ")[column];
     }
