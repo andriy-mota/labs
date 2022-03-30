@@ -113,17 +113,17 @@ public class Utils {
     }
 
     public static void fillMatrix(int[][] matrix, int number) {
-        for(int i = 0; i < matrix.length; ++i) {
-            for(int j = 0; j < matrix[i].length; ++j) {
+        for (int i = 0; i < matrix.length; ++i) {
+            for (int j = 0; j < matrix[i].length; ++j) {
                 matrix[i][j] = number;
             }
         }
     }
 
-    public static int[][] readLab4Matrix() {
-        String[] allLines = getResourceAsString("/course4semester2/lb4/l4_2.txt").split("\n");
+    public static int[][] readIntMatrixFromSuppliedPath(String path) {
+        String[] allLines = getResourceAsString(path).split("\n");
         int numberOfVertices = Integer.parseInt(allLines[0]);
-        String[] matrixLines = new String[allLines.length-1];
+        String[] matrixLines = new String[allLines.length - 1];
         System.arraycopy(allLines, 1, matrixLines, 0, matrixLines.length);
         int[][] matrix = new int[numberOfVertices][numberOfVertices];
         for (int i = 0; i < numberOfVertices; ++i) {
@@ -138,6 +138,57 @@ public class Utils {
     private static String getStringFromLinesByPosition(String[] lines, int row, int column) {
         return lines[row].split(" ")[column];
     }
+
+    public static int[] swap(int data[], int left, int right) {
+
+        int temp = data[left];
+        data[left] = data[right];
+        data[right] = temp;
+
+        return data;
+    }
+
+    public static int[] reverse(int data[], int left, int right) {
+
+        while (left < right) {
+            int temp = data[left];
+            data[left++] = data[right];
+            data[right--] = temp;
+        }
+
+        return data;
+    }
+
+    public static boolean findNextPermutation(int data[]) {
+        if (data.length <= 1)
+            return false;
+
+        int last = data.length - 2;
+
+        while (last >= 0) {
+            if (data[last] < data[last + 1]) {
+                break;
+            }
+            last--;
+        }
+
+        if (last < 0)
+            return false;
+
+        int nextGreater = data.length - 1;
+
+        for (int i = data.length - 1; i > last; i--) {
+            if (data[i] > data[last]) {
+                nextGreater = i;
+                break;
+            }
+        }
+
+        data = swap(data, nextGreater, last);
+        data = reverse(data, last + 1, data.length - 1);
+        return true;
+    }
+
 
     private static String getResourceAsString(String fileName) {
         try (InputStream is = Lab2.class.getResourceAsStream(fileName)) {
